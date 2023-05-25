@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Pangolin', cursive;  
+}
+
+.navbar {
+    background: #2289E8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    position: fixed;
+    width: 100vw;
+
+    .left {
+    padding: 0px 10vw;
+        h2 {
+            
+            font-weight: 700;
+            font-size: 45px;
+            color: #FFFFFF;
+        }
+    }
+
+    .right{
+        padding: 0px 10vw;
+        img{
+            width: 60px;
+        }
+    }
+}
