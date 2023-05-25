@@ -10,7 +10,7 @@ import { addTodo } from '../../store/todos/todoSlice'
 export default function Home() {
   const dispatch = useDispatch()
 
-  const [showAddModal, setshowAddModal] = useState(true);
+  const [showAddModal, setshowAddModal] = useState(false);
   const [addingTask, setaddingTask] = useState();
   // const [allTask, setallTask] = useState([]);
   const allTask = useSelector((state) => {
@@ -44,22 +44,11 @@ export default function Home() {
 
           <div className="list-container">
             <ul>
-              <li>
-                <div className="circle">
-                  <div></div>
-                </div>
-                <div className="title">
-                  <h1 className='text-title ' >Todys </h1>
-                  <h5>12:34 am </h5>
-                </div>
-                <div className="trash">
-                  <img src={trash} />
-                </div>
-              </li>
+
               {
-                allTask && allTask.map((item, key) => {
+                allTask && allTask.map((item, index) => {
                   return (<>
-                    <TodosList item={item} key={key} />
+                    <TodosList item={item} id={index} />
                   </>)
                 })
               }

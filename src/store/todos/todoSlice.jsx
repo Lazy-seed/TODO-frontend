@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const todolistSlice = createSlice({
-
     name: "TODO_LIST",
     initialState: [],
     reducers: {
@@ -11,9 +10,21 @@ const todolistSlice = createSlice({
             var currentdate = new Date();
             state.push({ 'title': action.payload, 'job': "undone", 'date': currentdate })
         },
-        delTodo(state, action) { },
-        doneTodo(state,action){
-            
+        delTodo(state, action) {
+            state.splice(action.payload, 1);
+        },
+        doneTodo(state, action) {
+
+            const id = action.payload;
+            { state[id].job === 'undone' ? state[id].job = 'done' : state[id].job = 'undone'; }
+
+
+
+
+
+
+
+
         },
     }
 
@@ -23,6 +34,6 @@ const todolistSlice = createSlice({
 
 
 export default todolistSlice;
-export const { addTodo, delTodo } = todolistSlice.actions;
+export const { addTodo, delTodo, doneTodo } = todolistSlice.actions;
 
 
