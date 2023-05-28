@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useDispatch } from "react-redux";
 
 // const URL = 'http://localhost:8000'
-const URL = 'http://localhost:8000'
+const URL = 'https://todo-backend-6trt.onrender.com'
 
 const initialState = {
   data: [],
