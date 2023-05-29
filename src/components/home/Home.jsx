@@ -11,6 +11,11 @@ import axios from 'axios';
 export default function Home() {
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(getAllTodo());
+    console.log("page reload of todolist");
+  }, [])
+
   const [showAddModal, setshowAddModal] = useState(false);
   const [addingTask, setaddingTask] = useState();
 

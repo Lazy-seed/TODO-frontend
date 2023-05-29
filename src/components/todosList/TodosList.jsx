@@ -10,10 +10,7 @@ import { delTodo, updateTodo, getAllTodo } from '../../store/todos/todoSlice'
 export default function TodosList({ item, id }) {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllTodo());
-    console.log("page reload of todolist");
-  }, [])
+
 
   const allTask = useSelector((state) => state.todolist.data)
   const isLoading = useSelector((state) => state.todolist.isLoading)
