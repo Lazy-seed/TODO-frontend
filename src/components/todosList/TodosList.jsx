@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { delTodo, updateTodo, getAllTodo } from '../../store/todos/todoSlice'
 
 
-export default function TodosList({ item, id }) {
+export default function TodosList({ filterTodo }) {
   const dispatch = useDispatch();
 
 
@@ -36,22 +36,31 @@ export default function TodosList({ item, id }) {
           // const hr = item.date.getHours < 10 ? '0' + item.date.getHours : item.date.getHours;
           // const mn = item.date.getMinutes < 10 ? '0' + item.date.getMinutes : item.date.getMinutes;
 
-          return (
+          
+          if (filterTodo === 'done' || filterTodo === 'a') {
+            return (
 
-            <li key={item._id}>
-              <div className="circle" onClick={() => dispatch(updateTodo(item._id))}>
-                {item.job === 'done' ? <img src={tick} alt='tick' /> : <div></div>}
+              <li key={item._id}>
+                <div className="circle" onClick={() => dispatch(updateTodo(item._id))}>
+                  {item.job === 'done' ? <img src={tick} alt='tick' /> : <div></div>}
 
-              </div>
-              <div className="title">
-                <h1 className={`text-title ${item.job === 'done' ? 'ticked' : ''} `}>{item.title} </h1>
-                {/* <h5>{hr}:{mn} am  </h5> */}
-              </div>
-              <div className="trash" >
-                <img src={trash} alt='del' onClick={() => dispatch(delTodo(item._id))} />
-              </div>
-            </li>
-          )
+                </div>
+                <div className="title">
+                  <h1 className={`text-title ${item.job === 'done' ? 'ticked' : ''} `}>{item.title} </h1>
+                  {/* <h5>{hr}:{mn} am  </h5> */}
+                </div>
+                <div className="trash" >
+                  <img src={trash} alt='del' onClick={() => dispatch(delTodo(item._id))} />
+                </div>
+              </li>
+            )
+          }
+
+
+
+
+
+
         })
 
 

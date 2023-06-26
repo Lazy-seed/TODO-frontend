@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios'
 import { useDispatch } from "react-redux";
 
-const URL = 'http://localhost:8000'
-// const URL = 'https://todo-backend-6trt.onrender.com'
+// const URL = 'http://localhost:8000'
+const URL = 'https://todo-backend-6trt.onrender.com'
 
 const initialState = {
   data: [],
@@ -30,7 +30,7 @@ export const addTodo = createAsyncThunk(
 export const updateTodo = createAsyncThunk(
   'content/getAllTodo',
   async (data) => {
-    console.log(data);
+    // console.log(data);
     const res = await axios.post(`${URL}/api/updateTask`, { id: data }, { withCredentials: true })
     return res.data.allTask
 
@@ -41,6 +41,13 @@ export const delTodo = createAsyncThunk(
   async (data) => {
     const res = await axios.post(`${URL}/api/delTask`, { id: data }, { withCredentials: true })
     return  res.data.allTask
+  }
+)
+export const filterTodo = createAsyncThunk(
+  'content/getAllTodo',
+  async (data) => {
+    const res = await axios.post(`${URL}/api/filterTask`, { job: data }, { withCredentials: true })
+    return  res.data.filterJob
   }
 )
 
@@ -70,37 +77,7 @@ const todolistSlice = createSlice({
     })
 
 
-    // // add to do -------------------------
-    // builder.addCase(addTodo.pending, (state) => {
-    //   state.isLoading = true
-    // })
-
-    // builder.addCase(addTodo.fulfilled, (state, action) => {
-    //   state.isLoading = false
-    //   state.data = action.payload
-
-    // })
-    // builder.addCase(addTodo.rejected, (state, action) => {
-    //   state.isLoading = false
-    //   state.error = action.error.message
-    // })
-
-
-
-    // delete -------------------------
-    // builder.addCase(delTodo.pending, (state) => {
-    //   state.isLoading = true
-    // })
-
-    // builder.addCase(delTodo.fulfilled, (state, action) => {
-    //   state.isLoading = false
-    //   state.data = action.payload
-
-    // })
-    // builder.addCase(delTodo.rejected, (state, action) => {
-    //   state.isLoading = false
-    //   state.error = action.error.message
-    // })
+   
   },
 
 

@@ -12,7 +12,7 @@ export default function Navbar() {
 
       <div className="right">
         <Link to='./login'>
-          <img src={avatar} alt="" srcset="" />
+          <img src={avatar} alt="" srcSet="" />
         </Link>
       </div>
     </div>

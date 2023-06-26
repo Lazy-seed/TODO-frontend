@@ -18,6 +18,7 @@ export default function Home() {
 
   const [showAddModal, setshowAddModal] = useState(false);
   const [addingTask, setaddingTask] = useState();
+  const [filterTodo, setfilterTodo] = useState('all');
 
 
 
@@ -38,9 +39,9 @@ export default function Home() {
           <div className="heading">
             <h1>Todo List</h1>
             <div className='btn-grup'>
-              <button className='b1'>All</button>
-              <button className='b2'>Done</button>
-              <button className='b3'>Remain</button>
+              <button className='b1'onClick={()=>{setfilterTodo("all")}} >All</button>
+              <button className='b2'onClick={()=>{setfilterTodo("done")}}>Done</button>
+              <button className='b3'onClick={()=>{setfilterTodo("undone")}}>Remain</button>
             </div>
           </div>
         </div>
@@ -49,7 +50,7 @@ export default function Home() {
 
           <div className="list-container">
             <ul>
-              <TodosList />
+              <TodosList filterTodo={filterTodo}/>
             </ul>
           </div>
 
